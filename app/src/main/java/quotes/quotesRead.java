@@ -2,9 +2,9 @@ package quotes;
 
 import com.google.gson.Gson;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Random;
 
 public class quotesRead {
@@ -16,14 +16,12 @@ public class quotesRead {
         this.quotes = readQuotes(theFile);
     }
 
-
-
     public Quotes[] readQuotes(String theFile) throws FileNotFoundException{
         Gson gson = new Gson();
         Reader reader = new FileReader(theFile);
         quotes = gson.fromJson(reader, Quotes[].class);
 
-        
+
         return quotes;
     }
 
@@ -35,6 +33,8 @@ public class quotesRead {
 
         return result.toString();
     }
+
+
 
 
 }

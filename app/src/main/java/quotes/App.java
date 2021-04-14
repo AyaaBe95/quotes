@@ -3,19 +3,45 @@
  */
 package quotes;
 
-import java.io.FileNotFoundException;
+import com.google.gson.Gson;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Random;
 
 
 public class App {
 
-    public static final String FILE = "app/src/main/resources/recentquotes.json";
+//    public static final String FILE = "app/src/main/resources/recentquotes.json";
+
 
     public static void main(String[] args) throws FileNotFoundException {
-        quotesRead qReader = new quotesRead(FILE);
-        System.out.println(qReader.getRandomQuote());
+
+        String apiURL = "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
+
+//        quotesRead qReader = new quotesRead(FILE);
+//        System.out.println(qReader.getRandomQuote());
+
+        try {
+            URL url = new URL(apiURL);
+            quotesApiRead quotesApiRead = new quotesApiRead();
+            String jsonData = quotesApiRead.getJsonFromAPI(url);
+
+            quotesFromApi triviaNumber = quotesApiRead.getquotesApiReadAsObject(jsonData);
+            System.out.println(triviaNumber);
+
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+
 
     }
 
 
-    
-}
