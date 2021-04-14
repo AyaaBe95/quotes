@@ -2,15 +2,14 @@ package quotes;
 
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Random;
 
 public class quotesApiRead {
 
+    public Quotes[] quotes;
 
 
     public static String getJsonFromAPI(URL url) throws IOException {
@@ -25,7 +24,11 @@ public class quotesApiRead {
             content = getContent(reader);
             reader.close();
         } else{
-            System.out.println("Error in the API");
+            System.out.println("Error in the API. we will show quote from the file");
+            String FILE = "app/src/main/resources/recentquot1es.json";
+            quotesRead qReader = new quotesRead(FILE);
+            System.out.println(qReader.getRandomQuote());
+
         }
 
         connection.disconnect();
@@ -53,10 +56,12 @@ public class quotesApiRead {
 
     static quotesFromApi getquotesApiReadAsObject(String jsonData) {
         Gson gson = new Gson();
-        quotesFromApi quotesfromApi = gson.fromJson(jsonData, quotesFromApi.class);
-        return quotesfromApi;
+        quotesFromApi QuotesfromApi = gson.fromJson(jsonData, quotesFromApi.class);
+        return QuotesfromApi;
     }
 
 
+
+   
 
 }
