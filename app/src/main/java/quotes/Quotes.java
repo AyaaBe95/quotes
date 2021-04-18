@@ -1,6 +1,7 @@
 package quotes;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Quotes {
 
@@ -20,16 +21,6 @@ public class Quotes {
     }
 
 
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
 
     public String getAuthor() {
         return author;
@@ -61,5 +52,19 @@ public class Quotes {
 
     public void setLikes(String likes) {
         this.likes = likes;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Quotes quotes = (Quotes) o;
+        return author.equals(quotes.author) && text.equals(quotes.text);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, text);
     }
 }

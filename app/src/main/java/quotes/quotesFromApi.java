@@ -1,34 +1,34 @@
 package quotes;
 
+import java.util.Objects;
+
 public class quotesFromApi {
 
-    private String quoteText;
-    //author
-    private String quoteAuthor;
-
-    public quotesFromApi(String quoteText, String quoteAuthor) {
-        this.quoteAuthor=quoteAuthor;
-        this.quoteAuthor=quoteAuthor;
-
-
-    }
+    String quoteText;
+    String quoteAuthor;
 
     public String getQuoteText() {
         return quoteText;
+    }
+
+    public void setQuoteText(String quoteText) {
+        this.quoteText = quoteText;
     }
 
     public String getQuoteAuthor() {
         return quoteAuthor;
     }
 
-
-    //to string
+    @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append(quoteText);
-        result.append("\n- " + quoteAuthor);
+        return "ApiQuote{" +
+                "quoteText='" + quoteText + '\'' +
+                ", quoteAuthor='" + quoteAuthor + '\'' +
+                '}';
+    }
 
-        return result.toString();
+    public void setQuoteAuthor(String quoteAuthor) {
+        this.quoteAuthor = quoteAuthor;
     }
 
 
