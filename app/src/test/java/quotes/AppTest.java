@@ -6,6 +6,9 @@ package quotes;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,6 +35,14 @@ public class AppTest {
         String expected = " “I am good, but not an angel. I do sin, but I am not the devil. I am just a small girl in a big world trying to " +
                 "find someone to love.” " + "\n- Marilyn Monroe";
         assertEquals("Should contain quotes", expected, test.getRandomQuote());
+    }
+
+    @Test public void testAPIQuote() throws IOException {
+        App app = new App();
+        String quoteUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
+        URL url = new URL(quoteUrl);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        assertTrue(String.valueOf(true), con.getResponseCode() != 200);
     }
 
 

@@ -11,30 +11,11 @@ import java.net.URL;
 
 public class App {
 
-//    public static final String FILE = "app/src/main/resources/recentquotes.json";
+    private static final String FILE = "app/src/main/resources/recentquotes.json";
+    static  final quotesRead quotesRead = new quotesRead(FILE);
 
-
-    public static void main(String[] args) throws FileNotFoundException {
-
-        String apiURL = "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
-
-//        quotesRead qReader = new quotesRead(FILE);
-//        System.out.println(qReader.getRandomQuote());
-
-        try {
-            URL url = new URL(apiURL);
-//            quotesApiRead QuotesApiRead = new quotesApiRead();
-            String jsonData = quotesApiRead.getJsonFromAPI(url);
-
-            quotesFromApi triviaNumber = quotesApiRead.getquotesApiReadAsObject(jsonData);
-            System.out.println(triviaNumber);
-
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
+    public static void main(String[] args) throws IOException {
+        quotesApiRead.getUrlQuote("http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en");
     }
 
 
