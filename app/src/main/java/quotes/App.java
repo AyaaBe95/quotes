@@ -3,13 +3,10 @@
  */
 package quotes;
 
-import com.google.gson.Gson;
 
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Random;
 
 
 public class App {
@@ -26,7 +23,7 @@ public class App {
 
         try {
             URL url = new URL(apiURL);
-            quotesApiRead quotesApiRead = new quotesApiRead();
+//            quotesApiRead QuotesApiRead = new quotesApiRead();
             String jsonData = quotesApiRead.getJsonFromAPI(url);
 
             quotesFromApi triviaNumber = quotesApiRead.getquotesApiReadAsObject(jsonData);

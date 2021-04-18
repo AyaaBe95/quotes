@@ -6,6 +6,13 @@ public class quotesFromApi {
     //author
     private String quoteAuthor;
 
+    public quotesFromApi(String quoteText, String quoteAuthor) {
+        this.quoteAuthor=quoteAuthor;
+        this.quoteAuthor=quoteAuthor;
+
+
+    }
+
     public String getQuoteText() {
         return quoteText;
     }
