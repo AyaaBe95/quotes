@@ -33,7 +33,7 @@ public class AppTest {
     public void testRandomQuote() throws FileNotFoundException {
         quotesRead test = new quotesRead(FILE);
         String expected = " “I am good, but not an angel. I do sin, but I am not the devil. I am just a small girl in a big world trying to " +
-                "find someone to love.” " + "\n- Marilyn Monroe";
+                "find someone to love.” " + "\n- Author: Marilyn Monroe";
         assertEquals("Should contain quotes", expected, test.getRandomQuote());
     }
 
@@ -42,10 +42,8 @@ public class AppTest {
         String quoteUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
         URL url = new URL(quoteUrl);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        assertTrue(String.valueOf(true), con.getResponseCode() != 200);
+        assertTrue(String.valueOf(true), con.getResponseCode() == 200);
     }
-
-
 
 }
 
