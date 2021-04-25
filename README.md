@@ -17,4 +17,15 @@ dependencies {
 - - QuotesReader: it has readQuotes method to read json file and  getRandomQuote to pick a random quote.
 
 ## Lab09: (Web request)
+
+![scanner](https://github.com/AyaaBe95/quotes/blob/main/Capture.PNG)
+
+- Return data from the api and display it after the connection with internet and send a request to the api.
 - Return a random quote from API: http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en
+
+### content:
+- getUrlQuote Method :create a connection between the user and server
+- getBufferedReader Method :create input stream.
+- write Method: write quotes that come from API inside local JSON file.
+- getFileQuote Method: to read thq quotes.
+
